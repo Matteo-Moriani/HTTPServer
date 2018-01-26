@@ -1,7 +1,6 @@
 # HTTPServer
 
 Progetto Sessione Gennaio/Febbraio.
-
  L'obiettivo del progetto è quello di sviluppare un server HTTP.  Il progetto prevede:
 
     Lo sviluppo di una serie di classi in Java che implementano le funzionalità e che estendono le interfacce messe a disposizione sul sito del corso;
