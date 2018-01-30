@@ -14,25 +14,25 @@ public class HTTPRequestClass implements HTTPRequest {
 	public HTTPRequestClass(String message) {
 		int i = 0;
 		
-		while(message.charAt(i) != ' '){//method
+		while(message.charAt(i) != ' '){//METHOD
 				this.method = this.method + message.charAt(i);
 				i=i+1;
 		}
 		i=i+1;
 		
-		while(message.charAt(i) != ' '){//path
+		while(message.charAt(i) != ' '){//PATH
 				this.path = this.path + message.charAt(i);
 				i=i+1;
 		}
 		i=i+1;
 		
-		while(message.charAt(i) != '\r'){//version
+		while(message.charAt(i) != '\r'){//VERSION
 				this.version = this.version + message.charAt(i);
 				i=i+1;
 		}
 		i=i+2;
 		
-		while(message.charAt(i) != '\r') {//parameters
+		while(message.charAt(i) != '\r') {//PARAMETERS
 			String param = "";
 			String value = "";
 			while(message.charAt(i) != ':'){
@@ -49,7 +49,7 @@ public class HTTPRequestClass implements HTTPRequest {
 		}
 		i=i+2;
 		
-		while(i < message.length()) {
+		while(i < message.length()) {//ENTITY BODY
 			entityBody = entityBody  + message.charAt(i);
 			i=i+1;
 		}
