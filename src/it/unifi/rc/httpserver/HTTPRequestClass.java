@@ -11,48 +11,12 @@ public class HTTPRequestClass implements HTTPRequest {
 	private Map<String,String> parameters = new HashMap<>();
 	private String entityBody = "";
 	
-	public HTTPRequestClass(String message) {
-		int i = 0;
-		
-		while(message.charAt(i) != ' '){//METHOD
-				this.method = this.method + message.charAt(i);
-				i=i+1;
-		}
-		i=i+1;
-		
-		while(message.charAt(i) != ' '){//PATH
-				this.path = this.path + message.charAt(i);
-				i=i+1;
-		}
-		i=i+1;
-		
-		while(message.charAt(i) != '\r'){//VERSION
-				this.version = this.version + message.charAt(i);
-				i=i+1;
-		}
-		i=i+2;
-		
-		while(message.charAt(i) != '\r') {//PARAMETERS
-			String param = "";
-			String value = "";
-			while(message.charAt(i) != ':'){
-				param = param + message.charAt(i);
-				i=i+1;
-			}
-			i=i+2;
-			while(message.charAt(i) != '\r'){
-				value = value + message.charAt(i);
-				i=i+1;
-			}
-			i=i+2;
-			parameters.put(param,  value);
-		}
-		i=i+2;
-		
-		while(i < message.length()) {//ENTITY BODY
-			entityBody = entityBody  + message.charAt(i);
-			i=i+1;
-		}
+	public HTTPRequestClass(String method, String path, String version, Map<String,String> parameters, String entityBody) {
+		this.method = method;
+		this.path = path;
+		this.version = version;
+		this.parameters = parameters;
+		this.entityBody = entityBody;
 	}
 
 	@Override
