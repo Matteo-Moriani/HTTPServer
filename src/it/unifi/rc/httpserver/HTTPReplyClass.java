@@ -11,7 +11,7 @@ public class HTTPReplyClass implements HTTPReply{
 	private Map<String,String> parameters = new HashMap<>();
 	private String data = "";
 	
-	public HTTPReplyClass(String statusMessage, String statusCode, String version, Map<String,String> parameters, String data) {
+	public HTTPReplyClass(String version, String statusCode, String statusMessage, Map<String,String> parameters, String data) {
 		this.statusMessage = statusMessage;
 		this.statusCode = statusCode;
 		this.version = version;
