@@ -11,48 +11,12 @@ public class HTTPReplyClass implements HTTPReply{
 	private Map<String,String> parameters = new HashMap<>();
 	private String data = "";
 	
-	public HTTPReplyClass(String message) {
-		int i = 0;
-
-		while(message.charAt(i) != ' '){//VERSION
-			this.version = this.version + message.charAt(i);
-			i=i+1;
-		}
-		i=i+1;
-		
-		while(message.charAt(i) != ' '){//STATUS CODE
-				this.statusCode = this.statusCode + message.charAt(i);
-				i=i+1;
-		}
-		i=i+1;
-		
-		while(message.charAt(i) != '\r'){//STATU MESSAGE
-				this.statusMessage = this.statusMessage + message.charAt(i);
-				i=i+1;
-		}
-		i=i+2;
-		
-		while(message.charAt(i) != '\r') {//HEADER
-			String param = "";
-			String value = "";
-			while(message.charAt(i) != ':'){
-				param = param + message.charAt(i);
-				i=i+1;
-			}
-			i=i+2;
-			while(message.charAt(i) != '\r'){
-				value = value + message.charAt(i);
-				i=i+1;
-			}
-			i=i+2;
-			parameters.put(param,  value);
-		}
-		i=i+2;
-		
-		while(i < message.length()) {//DATA
-			data = data  + message.charAt(i);
-			i=i+1;
-		}
+	public HTTPReplyClass(String statusMessage, String statusCode, String version, Map<String,String> parameters, String data) {
+		this.statusMessage = statusMessage;
+		this.statusCode = statusCode;
+		this.version = version;
+		this.parameters = parameters;
+		this.data = data;
 	}
 
 	@Override

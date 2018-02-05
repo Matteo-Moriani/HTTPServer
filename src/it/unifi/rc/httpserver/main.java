@@ -11,8 +11,8 @@ public class main {
 		String a = "HTTP/1.0 200 OK\r\nHost: Ciao\r\n\r\naaaaaaaaaaaaa.";
 		OutputStream asd = new ByteArrayOutputStream();
 		HTTPOutputStreamClass ddd = new HTTPOutputStreamClass(asd);
-		HTTPReply aaa = new HTTPReplyClass(a);
-		ddd.writeHttpReply(aaa);
+		//HTTPReply aaa = new HTTPReplyClass(a);
+		//ddd.writeHttpReply(aaa);
 	}
 
 }

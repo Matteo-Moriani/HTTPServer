@@ -43,7 +43,7 @@ public class HTTPInputStreamClass extends HTTPInputStream{
 				message = message + (char)i;
 			}
 			System.out.println(message);
-			cast = new HTTPReplyClass (message);
+			//cast = new HTTPReplyClass (message);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
