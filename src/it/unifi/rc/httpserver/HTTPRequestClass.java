@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class HTTPRequestClass implements HTTPRequest {
 	
-	private String method = "";//nooooooooooo
+	private String method = "";//siiiiiiiiiiii
 	private String path = "";
 	private String version = "";
 	private Map<String,String> parameters = new HashMap<>();
