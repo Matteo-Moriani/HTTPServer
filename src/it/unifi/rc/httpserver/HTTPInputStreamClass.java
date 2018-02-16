@@ -19,7 +19,9 @@ public class HTTPInputStreamClass extends HTTPInputStream{
 	@Override
 	public HTTPRequest readHttpRequest() throws HTTPProtocolException {//legge una stringa dall'input stream e ne genera l'HTTPRequest
 		Scanner sc = new Scanner(inputS);
-		System.out.print(sc.next());
+		sc.useDelimiter("%%%###");
+		while(sc.hasNext())
+			System.out.print(sc.next());
 		return new HTTPRequestClass(null, null, null, null, null);
 	}
 
