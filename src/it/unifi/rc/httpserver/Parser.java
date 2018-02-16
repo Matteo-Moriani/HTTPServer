@@ -18,7 +18,6 @@ public class Parser {
 			method = method + message.charAt(i);
 			i++;
 		}
-		System.out.println(method);
 		return method;
 	}
 	
@@ -29,7 +28,6 @@ public class Parser {
 			URL = URL + message.charAt(i);
 			i++;
 		}
-		System.out.println(URL);
 		return URL;
 	}
 	
@@ -40,7 +38,6 @@ public class Parser {
 			version = version + message.charAt(i);
 			i++;
 		}
-		System.out.println(version);
 		return version;
 	}
 	
@@ -74,7 +71,6 @@ public class Parser {
 			body = body + message.charAt(i);
 			i++;
 		}
-		System.out.println(body);
 		return body;
 	}
 }

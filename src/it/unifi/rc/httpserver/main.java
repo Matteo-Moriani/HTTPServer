@@ -11,7 +11,13 @@ public class main {
 		String p = "HTTP/1.1 200 OK\r\nDate: Sun, 18 Oct 2009 08:56:53 GMT\r\nServer: Apache/2.2.14 (Win32)\r\n\r\naaac";
 		InputStream s = new ByteArrayInputStream(p.getBytes());
 		HTTPInputStreamClass a = new HTTPInputStreamClass(s);
-		a.readHttpRequest();
+		HTTPReply diocane = a.readHttpReply();
+		System.out.println(diocane.getVersion());
+		System.out.println(diocane.getStatusCode());
+		System.out.println(diocane.getStatusMessage());
+		System.out.println(diocane.getParameters().get("Date"));
+		System.out.println(diocane.getData());
+		
 	}
 
 }

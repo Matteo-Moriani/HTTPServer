@@ -6,6 +6,7 @@ import java.util.*;
 
 public class HTTPInputStreamClass extends HTTPInputStream{
 	private InputStream inputS;
+	private Parser p;
 
 	public HTTPInputStreamClass(InputStream is) {
 		super(is);
@@ -20,27 +21,20 @@ public class HTTPInputStreamClass extends HTTPInputStream{
 	public HTTPRequest readHttpRequest() throws HTTPProtocolException {//legge una stringa dall'input stream e ne genera l'HTTPRequest
 		Scanner sc = new Scanner(inputS);
 		sc.useDelimiter("%%%###");
-		while(sc.hasNext())
-			System.out.print(sc.next());
-		return new HTTPRequestClass(null, null, null, null, null);
+		String message = sc.next();
+		p = new Parser(message);
+		sc.close();
+		return new HTTPRequestClass(p.extractMethOrVers(), p.extractURLOrStatN(), p.extractVersOrStatCode(), p.extractHeadersOrParam(), p.extractBodyOrData());
 	}
 
 	@Override
 	public HTTPReply readHttpReply() throws HTTPProtocolException {//legge una stringa dall'input stream e ne genera l'HTTPRply
-		String message = "";
-		HTTPReply cast = null;
-		try {
-			int i = 0;
-			while((i = inputS.read()) != -1) {
-				message = message + (char)i;
-			}
-			System.out.println(message);
-			//cast = new HTTPReplyClass (message);
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return cast;
+		Scanner sc = new Scanner(inputS);
+		sc.useDelimiter("%%%###");
+		String message = sc.next();
+		p = new Parser(message);
+		sc.close();
+		return new HTTPReplyClass(p.extractMethOrVers(), p.extractURLOrStatN(), p.extractVersOrStatCode(), p.extractHeadersOrParam(), p.extractBodyOrData());
 	}
 
 	@Override
