@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 public class HTTPOutputStreamClass extends HTTPOutputStream{
-	OutputStream outputS;
+	private OutputStream outputS;
 
 	public HTTPOutputStreamClass(OutputStream os) {
 		super(os);
@@ -49,7 +49,7 @@ public class HTTPOutputStreamClass extends HTTPOutputStream{
 
 	@Override
 	public void close() throws IOException {
-		// TODO Auto-generated method stub
+		outputS.close();
 		
 	}
 

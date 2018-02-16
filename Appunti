@@ -1,1 +1,8 @@
 Cos'è una hashmap?
+Perché statuscode string e non int?
+
+Esercizio 1: non c'è nessuna classe myHTTPFactory fornita, immagino dobbiamo implementarla noi
+Perché i setter di input e output sono protected?
+
+readHTTPRequest va ancora implementato
+che schifo è HTTPReply
