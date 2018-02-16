@@ -6,3 +6,5 @@ Perché i setter di input e output sono protected?
 
 readHTTPRequest va ancora implementato
 che schifo è HTTPReply
+
+trovare il modo di non usare delimiter
