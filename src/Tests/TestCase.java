@@ -1,4 +1,4 @@
-package it.unifi.rc.httpserver;
+package Tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -6,6 +6,11 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
+
+import it.unifi.rc.httpserver.HTTPInputStreamClass;
+import it.unifi.rc.httpserver.HTTPProtocolException;
+import it.unifi.rc.httpserver.HTTPReply;
+import it.unifi.rc.httpserver.HTTPRequest;
 
 class TestCase {
 	
@@ -25,7 +30,7 @@ class TestCase {
 
 	@Test
 	
-	void inputStreamRequest() throws HTTPProtocolException {
+	void inputStreamRequestTest() throws HTTPProtocolException {
 		HTTPRequest r = b.readHttpRequest();
 		
 		assertEquals("GET",r.getMethod());
@@ -36,7 +41,7 @@ class TestCase {
 		assertEquals("Body",r.getEntityBody());
 	}
 	
-	void inputStreamReply() throws HTTPProtocolException {
+	void inputStreamReplyTest() throws HTTPProtocolException {
 		HTTPReply r = a.readHttpReply();
 		
 		assertEquals("HTTP/1.1",r.getVersion());
