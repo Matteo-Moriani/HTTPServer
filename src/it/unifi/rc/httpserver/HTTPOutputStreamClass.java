@@ -45,8 +45,7 @@ public class HTTPOutputStreamClass extends HTTPOutputStream{
 	}
 
 	public void close() throws IOException {
-		outputS.close();
-		
+		outputS.close();	
 	}
 
 }
