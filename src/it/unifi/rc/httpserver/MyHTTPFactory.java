@@ -7,13 +7,11 @@ import java.net.InetAddress;
 
 public class MyHTTPFactory implements HTTPFactory {
 
-	@Override
-	public HTTPInputStream getHTTPInputStream(InputStream is) {
+	public HTTPInputStream getHTTPInputStream(InputStream is) { // vedi se ha senso fare un factory di classi che hanno costruttori definiti
 		HTTPInputStream myInputS = new HTTPInputStreamClass(is);
 		return myInputS;
 	}
 
-	@Override
 	public HTTPOutputStream getHTTPOutputStream(OutputStream os) {
 		HTTPOutputStreamClass myOutputS = new HTTPOutputStreamClass(os);
 		return myOutputS;

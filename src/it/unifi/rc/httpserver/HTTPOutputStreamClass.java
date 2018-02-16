@@ -10,12 +10,10 @@ public class HTTPOutputStreamClass extends HTTPOutputStream{
 		super(os);
 	}
 
-	@Override
 	protected void setOutputStream(OutputStream os) {
 		this.outputS = os;
 	}
 
-	@Override
 	public void writeHttpReply(HTTPReply reply) {//SCRIVE HTTPREPLY NELL'OUTPUT STREAM
 		String req = reply.getVersion()+ " " + reply.getStatusCode() + " " +reply.getStatusMessage() + "\r\n";
 		
@@ -31,7 +29,6 @@ public class HTTPOutputStreamClass extends HTTPOutputStream{
 		}
 	}
 
-	@Override
 	public void writeHttpRequest(HTTPRequest request) {//SCRIVE HTTPREQUEST NELL'OUTPUT STREAM
 		String req = request.getMethod()+ " " + request.getPath() + " " +request.getVersion() + "\r\n";
 		
@@ -47,7 +44,6 @@ public class HTTPOutputStreamClass extends HTTPOutputStream{
 		}
 	}
 
-	@Override
 	public void close() throws IOException {
 		outputS.close();
 		

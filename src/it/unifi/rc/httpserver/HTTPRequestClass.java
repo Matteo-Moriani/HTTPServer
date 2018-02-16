@@ -19,27 +19,22 @@ public class HTTPRequestClass implements HTTPRequest {
 		this.entityBody = entityBody;
 	}
 
-	@Override
 	public String getVersion() {
 		return version;
 	}
 
-	@Override
 	public String getMethod() {
 		return method;
 	}
 
-	@Override
 	public String getPath() {
 		return path;
 	}
 
-	@Override
 	public String getEntityBody() {
 		return entityBody;
 	}
 
-	@Override
 	public Map<String, String> getParameters() {
 		return parameters;
 	}

@@ -19,27 +19,22 @@ public class HTTPReplyClass implements HTTPReply{
 		this.data = data;
 	}
 
-	@Override
 	public String getVersion() {
 		return version;
 	}
 
-	@Override
 	public String getStatusCode() {
 		return statusCode;
 	}
 
-	@Override
 	public String getStatusMessage() {
 		return statusMessage;
 	}
 
-	@Override
 	public String getData() {
 		return data;
 	}
 
-	@Override
 	public Map<String, String> getParameters() {
 		return parameters;
 	}

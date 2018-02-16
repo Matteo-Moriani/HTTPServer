@@ -12,12 +12,10 @@ public class HTTPInputStreamClass extends HTTPInputStream{
 		super(is);
 	}
 
-	@Override
 	protected void setInputStream(InputStream is) {
 		this.inputS = is;
 	}
 
-	@Override
 	public HTTPRequest readHttpRequest() throws HTTPProtocolException {//legge una stringa dall'input stream e ne genera l'HTTPRequest
 		Scanner sc = new Scanner(inputS);
 		sc.useDelimiter("%%%###");
@@ -27,7 +25,6 @@ public class HTTPInputStreamClass extends HTTPInputStream{
 		return new HTTPRequestClass(p.extractMethOrVers(), p.extractURLOrStatN(), p.extractVersOrStatCode(), p.extractHeadersOrParam(), p.extractBodyOrData());
 	}
 
-	@Override
 	public HTTPReply readHttpReply() throws HTTPProtocolException {//legge una stringa dall'input stream e ne genera l'HTTPRply
 		Scanner sc = new Scanner(inputS);
 		sc.useDelimiter("%%%###");
@@ -37,7 +34,6 @@ public class HTTPInputStreamClass extends HTTPInputStream{
 		return new HTTPReplyClass(p.extractMethOrVers(), p.extractURLOrStatN(), p.extractVersOrStatCode(), p.extractHeadersOrParam(), p.extractBodyOrData());
 	}
 
-	@Override
 	public void close() throws IOException {
 		inputS.close();
 	}
