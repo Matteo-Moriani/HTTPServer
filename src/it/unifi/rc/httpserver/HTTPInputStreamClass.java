@@ -2,7 +2,7 @@ package it.unifi.rc.httpserver;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Scanner;
+import java.util.*;
 
 public class HTTPInputStreamClass extends HTTPInputStream{
 	private InputStream inputS;
