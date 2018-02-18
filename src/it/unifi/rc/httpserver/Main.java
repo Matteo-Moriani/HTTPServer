@@ -5,9 +5,9 @@ import java.io.File;
 public class Main {	// ora ci sono i test
 
 	public static void main(String[] args) throws HTTPProtocolException {
-		File f = new File("s.txt");
-		f.delete();
-		System.out.println(f.exists());
+		Parser p = new Parser("method aaa ");
+		System.out.println(p.extractMethOrVers());
+		System.out.println(p.extractURLOrStatN());
 	}
 
 }
