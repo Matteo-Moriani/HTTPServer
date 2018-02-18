@@ -1,13 +1,10 @@
 package Tests;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+import it.unifi.rc.httpserver.*;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.junit.jupiter.api.Test;
-
-import it.unifi.rc.httpserver.HTTPRequestClass;
 
 class RequestTest {
 	

@@ -1,16 +1,11 @@
 package Tests;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
-
-import it.unifi.rc.httpserver.HTTPInputStreamClass;
-import it.unifi.rc.httpserver.HTTPProtocolException;
-import it.unifi.rc.httpserver.HTTPReply;
-import it.unifi.rc.httpserver.HTTPRequest;
+import it.unifi.rc.httpserver.*;
 
 class InputStreamTest {
 	
