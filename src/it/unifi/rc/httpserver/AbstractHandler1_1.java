@@ -16,7 +16,7 @@ public abstract class AbstractHandler1_1 extends AbstractHandler{
 		return "HTTP/1.1";
 	}
 	
-	public HTTPReply replyToPut(HTTPRequest request) {
+	public HTTPReplyClass replyToPut(HTTPRequest request) {
 		File f = new File(getPathFile() + request.getPath());
 		
 		if(request.getEntityBody().isEmpty()) {
@@ -45,7 +45,7 @@ public abstract class AbstractHandler1_1 extends AbstractHandler{
 		return new HTTPReplyClass(request.getVersion(), "200", "OK", null, "");
 	}
 	
-	public HTTPReply replyToDelete(HTTPRequest request) {
+	public HTTPReplyClass replyToDelete(HTTPRequest request) {
 		File f = new File(getPathFile() + request.getPath());
 		if(f.exists()){
 			f.delete();
@@ -58,8 +58,8 @@ public abstract class AbstractHandler1_1 extends AbstractHandler{
 		
 	}
 	
-	public HTTPReply chooseMethod(HTTPRequest request) {
-		HTTPReply reply = null;
+	public HTTPReplyClass chooseMethod(HTTPRequest request) {
+		HTTPReplyClass reply = null;
 		
 		switch(request.getMethod()) {
 			case("GET"):

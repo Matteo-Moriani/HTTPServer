@@ -46,7 +46,7 @@ public abstract class AbstractHandler implements HTTPHandler{
 		return reply;
 	}
 	
-	public HTTPReply replyToGet(HTTPRequest request) {
+	public HTTPReplyClass replyToGet(HTTPRequest request) {
 		File f = new File(pathFile.getAbsolutePath() + request.getPath());
 		List<String> content = new ArrayList<String>();
 		
@@ -65,7 +65,7 @@ public abstract class AbstractHandler implements HTTPHandler{
 		}
 	}
 	
-	public HTTPReply replyToHead(HTTPRequest request) {
+	public HTTPReplyClass replyToHead(HTTPRequest request) {
 		File f = new File(pathFile.getAbsolutePath() + request.getPath()); 
 		
 		if(f.exists()){
@@ -75,7 +75,7 @@ public abstract class AbstractHandler implements HTTPHandler{
 		}
 	}
 	
-	public HTTPReply replyToPost(HTTPRequest request) {
+	public HTTPReplyClass replyToPost(HTTPRequest request) {
 		File f = new File(pathFile.getAbsolutePath() + request.getPath());
 		
 		if(request.getEntityBody().isEmpty()) {
