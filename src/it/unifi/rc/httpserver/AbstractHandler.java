@@ -53,16 +53,13 @@ public abstract class AbstractHandler implements HTTPHandler{
 		try {
 			content = Files.readAllLines(Paths.get(f.getAbsolutePath()));
 		} catch (IOException e) {
-			e.printStackTrace();
+			return new HTTPReplyClass(request.getVersion(), "404", "Not Found", null, null);
 		}
 		
 		String text = contentToString(content); 
 		
-		if(f.exists()){
-			return new HTTPReplyClass(request.getVersion(), "200", "OK", makeParameters(f), text);
-		}else{
-			return new HTTPReplyClass(request.getVersion(), "404", "Not Found", null, null);
-		}
+		return new HTTPReplyClass(request.getVersion(), "200", "OK", makeParameters(f), text);
+
 	}
 	
 	public HTTPReplyClass replyToHead(HTTPRequest request) {
