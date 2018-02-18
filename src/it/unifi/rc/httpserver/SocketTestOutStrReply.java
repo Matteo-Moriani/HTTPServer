@@ -33,7 +33,7 @@ String result = "";
 				  }
 				).start();
 		Socket socket = new Socket("localhost", 4361);
-		byte [] mybytearray  = new byte [1000];
+//		byte [] mybytearray  = new byte [1000];
 	    InputStream is = socket.getInputStream();
 	    int a = is.read();
 	    while(a != -1) {
@@ -41,6 +41,7 @@ String result = "";
 	    	a = is.read();
 	    }
 	    ssocket.close();
+	    socket.close();
 		return result;
 	}
 

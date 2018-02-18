@@ -1,24 +1,21 @@
 package Tests;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.io.ByteArrayOutputStream;
+//import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PipedInputStream;
-import java.io.PipedOutputStream;
-import java.io.PrintStream;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-
+//import java.io.InputStream;
+//import java.io.OutputStream;
+//import java.io.PipedInputStream;
+//import java.io.PipedOutputStream;
+//import java.io.PrintStream;
+//import java.net.ServerSocket;
+//import java.net.Socket;
+//import java.util.HashMap;
+//import java.util.Map;
+//import java.util.Scanner;
 import it.unifi.rc.httpserver.*;
-
-import org.junit.Before;
-import org.junit.jupiter.api.BeforeAll;
+//import org.junit.Before;
+//import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class OutputStreamTest {

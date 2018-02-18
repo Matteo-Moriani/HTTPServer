@@ -33,7 +33,7 @@ public class SocketTestOutStrRequest {
 				  }
 				).start();
 		Socket socket = new Socket("localhost", 4356);
-		byte [] mybytearray  = new byte [1000];
+//		byte [] mybytearray  = new byte [1000];
 	    InputStream is = socket.getInputStream();
 	    int a = is.read();
 	    while(a != -1) {
@@ -41,6 +41,7 @@ public class SocketTestOutStrRequest {
 	    	a = is.read();
 	    }
 	    ssocket.close();
+	    socket.close();
 		return result;
 	}
 
