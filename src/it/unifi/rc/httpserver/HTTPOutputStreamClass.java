@@ -16,10 +16,11 @@ public class HTTPOutputStreamClass extends HTTPOutputStream{
 
 	public void writeHttpReply(HTTPReply reply) {//SCRIVE HTTPREPLY NELL'OUTPUT STREAM
 		String req = reply.getVersion()+ " " + reply.getStatusCode() + " " +reply.getStatusMessage() + "\r\n";
-		
+		String req1 = "";
 		for (String key: reply.getParameters().keySet()) {
-			req = req + key + ": " + reply.getParameters().get(key) + "\r\n";
+			req1 = key + ": " + reply.getParameters().get(key) + "\r\n" + req1;
 		}
+		req = req + req1;
 		req = req + "\r\n";
 		req = req + reply.getData();
 		try {
@@ -31,10 +32,11 @@ public class HTTPOutputStreamClass extends HTTPOutputStream{
 
 	public void writeHttpRequest(HTTPRequest request) {//SCRIVE HTTPREQUEST NELL'OUTPUT STREAM
 		String req = request.getMethod()+ " " + request.getPath() + " " +request.getVersion() + "\r\n";
-		
+		String req1 = "";
 		for (String key: request.getParameters().keySet()) {
-			req = req + key + ": " + request.getParameters().get(key) + "\r\n";
+			req1 = key + ": " + request.getParameters().get(key) + "\r\n" + req1;
 		}
+		req = req + req1;
 		req = req + "\r\n";
 		req = req + request.getEntityBody();
 		try {
@@ -46,6 +48,10 @@ public class HTTPOutputStreamClass extends HTTPOutputStream{
 
 	public void close() throws IOException {
 		outputS.close();	
+	}
+	
+	public OutputStream getOutputStream(){
+		return outputS;
 	}
 
 }

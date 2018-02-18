@@ -8,21 +8,23 @@ import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Main {	// ora ci sono i test
-
-	public static void main(String[] args) throws IOException {
-		String result = "";
-		ServerSocket ssocket = new ServerSocket(4323);	
+public class SocketTestOutStrRequest {
+	String result = "";
+	
+	public String simulateSocket() throws IOException{
+		
+		ServerSocket ssocket = new ServerSocket(4356);	
 		new Thread(
 				  new Runnable(){
 					public void run(){
 				      try {
 						Socket acc = ssocket.accept();
 						Map<String,String> parameters = new HashMap<>();
-						parameters.put("aa", "Aaaaaaaaaaaaaaaaaaaaaaaaaa");
+						parameters.put("name1", "value1");
+						parameters.put("name2", "value2");
 						OutputStream os = acc.getOutputStream();
 						HTTPOutputStreamClass httpsOS = new HTTPOutputStreamClass(os);	
-						httpsOS.writeHttpReply(new HTTPReplyClass("version", "statusCode", "statusMessage", parameters, "data"));
+						httpsOS.writeHttpRequest(new HTTPRequestClass("version", "statusCode", "statusMessage", parameters, "data"));
 						acc.close();
 				      } catch (IOException e) {
 						e.printStackTrace();
@@ -30,17 +32,16 @@ public class Main {	// ora ci sono i test
 				    }
 				  }
 				).start();
-		Socket socket = new Socket("localhost", 4323);
+		Socket socket = new Socket("localhost", 4356);
 		byte [] mybytearray  = new byte [1000];
 	    InputStream is = socket.getInputStream();
 	    int a = is.read();
 	    while(a != -1) {
 	    	result = result + (char)a;
-	    	System.out.print((char)a);
 	    	a = is.read();
 	    }
-	    System.out.println(result);
 	    ssocket.close();
+		return result;
 	}
 
 }
