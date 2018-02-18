@@ -11,10 +11,13 @@ public class HTTPServerClass implements HTTPServer {
 	private InetAddress address;
 	private List<HTTPHandler> handlers = new ArrayList<HTTPHandler>();
 	
-	public HTTPServerClass(int port, int backlog, InetAddress address) {
+	public HTTPServerClass(int port, int backlog, InetAddress address, HTTPHandler... handlers) {
 		this.port = port;
 		this.backlog = backlog;
 		this.address = address;
+		for(int i = 0; i<handlers.length; i++) {
+			this.handlers.add(handlers[i]);
+		}
 	}
 
 	public void addHandler(HTTPHandler handler) {
@@ -33,7 +36,7 @@ public class HTTPServerClass implements HTTPServer {
 
 	}
 	
-	public List<HTTPHandler> getHandlers(){
+	public List<HTTPHandler> getHandlers(){			// serve ai test
 		return handlers;
 	}
 

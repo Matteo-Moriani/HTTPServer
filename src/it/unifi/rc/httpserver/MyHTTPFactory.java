@@ -32,15 +32,14 @@ public class MyHTTPFactory implements HTTPFactory {
 	}
 
 	@Override
+	public HTTPServer getHTTPServer(int port, int backlog, InetAddress address, HTTPHandler... handlers) {
+		return new HTTPServerClass(port, backlog, address, handlers);
+	}
+	
+	@Override
 	public HTTPHandler getProxyHandler() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public HTTPServer getHTTPServer(int port, int backlog, InetAddress address, HTTPHandler... handlers) {
-		return new HTTPServerClass(port, backlog, address);
-		// che roba sono quei punti, come fa a funzionare?
 	}
 
 }
