@@ -69,9 +69,9 @@ public abstract class AbstractHandler implements HTTPHandler{
 		File f = new File(pathFile.getAbsolutePath() + request.getPath()); 
 		
 		if(f.exists()){
-			return new HTTPReplyClass(request.getVersion(), "200", "OK", makeParameters(f), "");
+			return new HTTPReplyClass(request.getVersion(), "200", "OK", makeParameters(f), null);
 		}else{
-			return new HTTPReplyClass(request.getVersion(), "404", "Not Found", new HashMap<String,String>(), "");
+			return new HTTPReplyClass(request.getVersion(), "404", "Not Found", null, null);
 		}
 	}
 	
@@ -79,7 +79,7 @@ public abstract class AbstractHandler implements HTTPHandler{
 		File f = new File(pathFile.getAbsolutePath() + request.getPath());
 		
 		if(request.getEntityBody().isEmpty()) {
-			return new HTTPReplyClass(request.getVersion(), "204", "No Content", null, ""); //non sicuro dello status code e message
+			return new HTTPReplyClass(request.getVersion(), "204", "No Content", null, null); //non sicuro dello status code e message
 		}
 		
 		try {
@@ -98,10 +98,10 @@ public abstract class AbstractHandler implements HTTPHandler{
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new HTTPReplyClass(request.getVersion(), "400", "Bad Request", null, "");
+			return new HTTPReplyClass(request.getVersion(), "400", "Bad Request", null, null);
 		}
 		
-		return new HTTPReplyClass(request.getVersion(), "200", "OK", null, "");
+		return new HTTPReplyClass(request.getVersion(), "200", "OK", null, null);
 	}
 
 	public String contentToString(List<String> content) {

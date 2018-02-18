@@ -20,7 +20,7 @@ public abstract class AbstractHandler1_1 extends AbstractHandler{
 		File f = new File(getPathFile() + request.getPath());
 		
 		if(request.getEntityBody().isEmpty()) {
-			return new HTTPReplyClass(request.getVersion(), "204", "No Content", null, ""); //non sic
+			return new HTTPReplyClass(request.getVersion(), "204", "No Content", null, null); //non sic
 		}
 		
 		try {
@@ -39,21 +39,19 @@ public abstract class AbstractHandler1_1 extends AbstractHandler{
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new HTTPReplyClass(request.getVersion(), "400", "Bad Request", null, "");
+			return new HTTPReplyClass(request.getVersion(), "400", "Bad Request", null, null);
 		}
 		
-		return new HTTPReplyClass(request.getVersion(), "200", "OK", null, "");
+		return new HTTPReplyClass(request.getVersion(), "200", "OK", null, null);
 	}
 	
 	public HTTPReplyClass replyToDelete(HTTPRequest request) {
 		File f = new File(getPathFile() + request.getPath());
 		if(f.exists()){
 			f.delete();
-			return new HTTPReplyClass(request.getVersion(), "200", "OK", null, "");
-		}else if(f.length() == 0){
-			return new HTTPReplyClass(request.getVersion(), "204", "No Content", null, "");
-		}else{
-			return new HTTPReplyClass(request.getVersion(), "404", "Not Found", null, "");
+			return new HTTPReplyClass(request.getVersion(), "200", "OK", null, null);
+		}else {
+			return new HTTPReplyClass(request.getVersion(), "404", "Not Found", null, null);
 		}
 		
 	}
