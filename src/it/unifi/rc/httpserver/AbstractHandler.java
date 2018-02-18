@@ -24,6 +24,7 @@ public abstract class AbstractHandler implements HTTPHandler{
 	
 	public abstract boolean hostControl(HTTPRequest request);
 	public abstract String getCurrentVersion();
+	public abstract HTTPReply chooseMethod(HTTPRequest request);
 
 	@Override
 	public HTTPReply handle(HTTPRequest request) {
@@ -34,21 +35,24 @@ public abstract class AbstractHandler implements HTTPHandler{
 		}
 		
 		if(!request.getVersion().equals(getCurrentVersion())){
-			 return null;
+			return null;
 		}
 		
 		if(!methods.contains(request.getMethod())) {
 			return new HTTPReplyClass(request.getVersion(), "400", "Bad Request", new HashMap<String,String>(), "");
 		}
 		
-		switch(request.getMethod()) {
-			case("GET"):
-				reply = replyToGet(request);
-			case("POST"):
-				reply = replyToPost(request);
-			case("HEAD"):
-				reply = replyToHead(request);
-		}
+		reply = chooseMethod(request);			// e' lo switch case, puo' ritornare null
+		
+//		switch(request.getMethod()) {
+//			case("GET"):
+//				reply = replyToGet(request);
+//			case("POST"):
+//				reply = replyToPost(request);
+//			case("HEAD"):
+//				reply = replyToHead(request);
+//			
+//		}
 		return reply;
 	}
 	
