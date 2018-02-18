@@ -59,19 +59,21 @@ public abstract class AbstractHandler1_1 extends AbstractHandler{
 	}
 	
 	public HTTPReply chooseMethod(HTTPRequest request) {
+		HTTPReply reply = null;
+		
 		switch(request.getMethod()) {
 			case("GET"):
-				replyToGet(request);
+				reply = replyToGet(request);
 			case("POST"):
-				replyToPost(request);
+				reply = replyToPost(request);
 			case("HEAD"):
-				replyToHead(request);
+				reply = replyToHead(request);
 			case("PUT"):
-				replyToPut(request);
+				reply = replyToPut(request);
 			case("DELETE"):
-				replyToDelete(request);
+				reply = replyToDelete(request);
 		}
-		return null;					// altrimenti return null si puo' fare?
+		return reply;
 	}
 
 }

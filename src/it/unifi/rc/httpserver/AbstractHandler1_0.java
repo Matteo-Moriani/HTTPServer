@@ -13,15 +13,16 @@ public abstract class AbstractHandler1_0 extends AbstractHandler{
 	}
 	
 	public HTTPReply chooseMethod(HTTPRequest request) {
+		HTTPReply reply = null;
 		switch(request.getMethod()) {
 			case("GET"):
-				replyToGet(request);
+				reply = replyToGet(request);
 			case("POST"):
-				replyToPost(request);
+				reply = replyToPost(request);
 			case("HEAD"):
-				replyToHead(request);
+				reply = replyToHead(request);
 		}
-		return null;					// altrimenti return null si puo' fare?
+		return reply;
 	}
 
 }
