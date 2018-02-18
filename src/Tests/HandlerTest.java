@@ -1,7 +1,12 @@
 package Tests;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -77,16 +82,39 @@ class HandlerTest {
 	void replyToPostOKTest() {
 		File f = new File("");
 		HandlerGenericHost1_0 h = new HandlerGenericHost1_0(f);
-		HTTPRequestClass req = new HTTPRequestClass("POST", "/src/Tests/PostTxt", "HTTP/1.0", null, "|");
+		double myDb = Math.random()*10;
+		int myInt = (int) myDb;
+		String num = String.valueOf(myInt);
+		HTTPRequestClass req = new HTTPRequestClass("POST", "/src/Tests/PostTxt", "HTTP/1.0", null, num);
 		HTTPReplyClass rep = h.replyToPost(req);
 		
-		// verificare che l'ultimo carettere e' "|"
-		
+		String line = "";
+		String last = "";
+        FileReader fileReader = null;
+		try {
+			fileReader = new FileReader("src/Tests/PostTxt");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        try {
+			while((line = bufferedReader.readLine()) != null) {
+			   last = line;
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}   
+        try {
+			bufferedReader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
 		assertEquals("HTTP/1.0",rep.getVersion());
 		assertEquals("200",rep.getStatusCode());
 		assertEquals("OK",rep.getStatusMessage());
 		assertEquals(null,rep.getParameters());
 		assertEquals(null,rep.getData());
+		assertEquals((num.charAt(0)), last.charAt(last.length()-1));
 	}
 	
 	@Test
@@ -110,17 +138,40 @@ class HandlerTest {
 	void replyToPutOKTest() {
 		File f = new File("");
 		HandlerGenericHost1_1 h = new HandlerGenericHost1_1(f);
-		String random = String.valueOf(Math.random());
-		HTTPRequestClass req = new HTTPRequestClass("PUT", "/src/Tests/PutTxt", "HTTP/1.1", null, random);
+		double myDb = Math.random()*10;
+		int myInt = (int) myDb;
+		String num = String.valueOf(myInt);
+		HTTPRequestClass req = new HTTPRequestClass("PUT", "/src/Tests/PutTxt", "HTTP/1.1", null, num);
 		HTTPReplyClass rep = h.replyToPut(req);
 		
 		// verificare che ora c'e' scritto il nuovo random
-		
+		String line = "";
+		String last = "";
+        FileReader fileReader = null;
+		try {
+			fileReader = new FileReader("src/Tests/PutTxt");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        try {
+			while((line = bufferedReader.readLine()) != null) {
+			   last = line;
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}   
+        try {
+			bufferedReader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
 		assertEquals("HTTP/1.1",rep.getVersion());
 		assertEquals("200",rep.getStatusCode());
 		assertEquals("OK",rep.getStatusMessage());
 		assertEquals(null,rep.getParameters());
 		assertEquals(null,rep.getData());
+		assertEquals((num.charAt(0)), last.charAt(last.length()-1));
 	}
 	
 	@Test
