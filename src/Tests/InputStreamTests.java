@@ -12,7 +12,7 @@ import it.unifi.rc.httpserver.HTTPProtocolException;
 import it.unifi.rc.httpserver.HTTPReply;
 import it.unifi.rc.httpserver.HTTPRequest;
 
-class TestCase {
+class InputStreamTests {
 	
 	String reply = "HTTP/1.1 200 OK\r\nDate: Sun, 18 Oct 2009 08:56:53 GMT\r\nServer: Apache/2.2.14 (Win32)\r\n\r\nBody";
 	InputStream i1 = new ByteArrayInputStream(reply.getBytes());

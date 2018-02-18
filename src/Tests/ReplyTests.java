@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import it.unifi.rc.httpserver.HTTPReplyClass;
 
-class HTTPReplyTestCase {
+class ReplyTests {
 	
 	private Map<String,String> parameters = new HashMap<>();
 	private HTTPReplyClass req = new HTTPReplyClass("version", "statusCode", "statusMessage", parameters, "data");
