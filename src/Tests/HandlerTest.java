@@ -17,7 +17,7 @@ class HandlerTest {
 	void replyToGetTest() {
 		HandlerGenericHost1_0 h = new HandlerGenericHost1_0(/);
 		HTTPRequestClass req = new HTTPRequestClass("GET", "/src/Tests/TestTxt", "HTTP/1.0", Map<String,String> parameters, "body");
-		HTTPReplyClass rep = getTest(req);
+		HTTPReplyClass rep = h.replyToGet(req);
 		
 		fail("Not yet implemented");
 	}
