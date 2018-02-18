@@ -39,8 +39,8 @@ public class MyHTTPFactory implements HTTPFactory {
 
 	@Override
 	public HTTPServer getHTTPServer(int port, int backlog, InetAddress address, HTTPHandler... handlers) {
-		// TODO Auto-generated method stub
-		return null;
+		return new HTTPServerClass(port, backlog, address);
+		// che roba sono quei punti, come fa a funzionare?
 	}
 
 }
