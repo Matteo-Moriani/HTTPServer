@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import it.unifi.rc.httpserver.HTTPRequestClass;
 
-class RequestTests {
+class RequestTest {
 	
 	private Map<String,String> parameters = new HashMap<>();
 	private HTTPRequestClass req = new HTTPRequestClass("method", "url", "version", parameters, "body");

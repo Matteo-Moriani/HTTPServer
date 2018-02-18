@@ -2,10 +2,10 @@ package it.unifi.rc.httpserver;
 
 import java.io.File;
 
-public class SpecificHostHandler1_1 extends AbstractHandler1_1{
+public class HandlerSpecificHost1_1 extends AbstractHandler1_1{
 	private String host;
 
-	public SpecificHostHandler1_1(File pathFile, String host) {
+	public HandlerSpecificHost1_1(File pathFile, String host) {
 		super(pathFile);
 		this.host = host;
 	}
