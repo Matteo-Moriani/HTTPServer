@@ -42,17 +42,7 @@ public abstract class AbstractHandler implements HTTPHandler{
 			return new HTTPReplyClass(request.getVersion(), "400", "Bad Request", new HashMap<String,String>(), "");
 		}
 		
-		reply = chooseMethod(request);			// e' lo switch case, puo' ritornare null
-		
-//		switch(request.getMethod()) {
-//			case("GET"):
-//				reply = replyToGet(request);
-//			case("POST"):
-//				reply = replyToPost(request);
-//			case("HEAD"):
-//				reply = replyToHead(request);
-//			
-//		}
+		reply = chooseMethod(request);			
 		return reply;
 	}
 	

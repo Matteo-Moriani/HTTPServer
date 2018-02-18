@@ -3,6 +3,7 @@ package Tests;
 import static org.junit.jupiter.api.Assertions.*;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
 import it.unifi.rc.httpserver.*;
@@ -17,15 +18,14 @@ class InputStreamTest {
 	InputStream i = new ByteArrayInputStream(request.getBytes());
 	HTTPInputStreamClass b = new HTTPInputStreamClass(i);
 	
-	// aiuto non so come funziona map
 	
-//	Map<String,String> map = new Map<String,String>();
-//	HTTPRequestClass req = new HTTPRequestClass("GET", "/wiki.com/Pagina_principale", "HTTP/1.1", map, "Body");
-//	HTTPReplyClass rep = new HTTPReplyClass("HTTP/1.1","200","OK", map,"Body");
+	Map<String,String> map = new HashMap<String,String>();
+	HTTPRequestClass req = new HTTPRequestClass("GET", "/wiki.com/Pagina_principale", "HTTP/1.1", map, "Body");
+	HTTPReplyClass rep = new HTTPReplyClass("HTTP/1.1","200","OK", map,"Body");
 
 	@Test
 	
-	void inputStreamRequestTest() throws HTTPProtocolException {
+	void readRequestTest() throws HTTPProtocolException {
 		HTTPRequest r = b.readHttpRequest();
 		
 		assertEquals("GET",r.getMethod());
@@ -36,7 +36,7 @@ class InputStreamTest {
 		assertEquals("Body",r.getEntityBody());
 	}
 	
-	void inputStreamReplyTest() throws HTTPProtocolException {
+	void readReplyTest() throws HTTPProtocolException {
 		HTTPReply r = a.readHttpReply();
 		
 		assertEquals("HTTP/1.1",r.getVersion());
@@ -46,13 +46,5 @@ class InputStreamTest {
 		assertEquals("Apache/2.2.14 (Win32)",r.getParameters().get("Server"));
 		assertEquals("Body",r.getData());
 	}
-	
-//	void outputStreamRequest() {
-//		
-//	}
-//	
-//	void outputStreamReply() {
-//		
-//	}
 
 }
