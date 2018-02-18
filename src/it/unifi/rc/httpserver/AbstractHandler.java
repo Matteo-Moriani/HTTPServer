@@ -59,9 +59,9 @@ public abstract class AbstractHandler implements HTTPHandler{
 		String text = contentToString(content); 
 		
 		if(f.exists()){
-			return new HTTPReplyClass(request.getVersion(), "200", "OK", getParameters(f), text);
+			return new HTTPReplyClass(request.getVersion(), "200", "OK", makeParameters(f), text);
 		}else{
-			return new HTTPReplyClass(request.getVersion(), "404", "Not Found", new HashMap<String,String>(), "");
+			return new HTTPReplyClass(request.getVersion(), "404", "Not Found", null, null);
 		}
 	}
 	
@@ -69,7 +69,7 @@ public abstract class AbstractHandler implements HTTPHandler{
 		File f = new File(pathFile.getAbsolutePath() + request.getPath()); 
 		
 		if(f.exists()){
-			return new HTTPReplyClass(request.getVersion(), "200", "OK", getParameters(f), "");
+			return new HTTPReplyClass(request.getVersion(), "200", "OK", makeParameters(f), "");
 		}else{
 			return new HTTPReplyClass(request.getVersion(), "404", "Not Found", new HashMap<String,String>(), "");
 		}
@@ -112,7 +112,7 @@ public abstract class AbstractHandler implements HTTPHandler{
 		return s;
 	}
 	
-	public Map<String,String> getParameters(File f){
+	public Map<String,String> makeParameters(File f){
 		Map<String,String> parameters = new HashMap<>();
 		parameters.put("Content-Length", String.valueOf(f.length()));
 		parameters.put("Date", new Date().toString());
