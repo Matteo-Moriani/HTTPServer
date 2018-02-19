@@ -33,7 +33,7 @@ public class MyHTTPFactory implements HTTPFactory {
 
 	@Override
 	public HTTPServer getHTTPServer(int port, int backlog, InetAddress address, HTTPHandler... handlers) {
-		return new HTTPServerClass(port, backlog, address, handlers);
+		return new HTTPServerMultiClientClass(port, backlog, address, handlers);
 	}
 	
 	@Override

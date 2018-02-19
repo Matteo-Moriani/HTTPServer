@@ -6,7 +6,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class SocketTestInputStrReply {
-String result = "";
+	String result = "";
 	
 	public HTTPReply simulateSocket() throws IOException{
 		
