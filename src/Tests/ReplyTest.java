@@ -12,27 +12,27 @@ class ReplyTest {
 	private HTTPReplyClass req = new HTTPReplyClass("version", "statusCode", "statusMessage", parameters, "data");
 	
 	@Test
-	void getMethodTestCase() {
+	void getMethodTest() {
 		assertEquals(req.getVersion(),"version");
 	}
 	
 	@Test
-	void getStatusCodeTestCase() {
+	void getStatusCodeTest() {
 		assertEquals(req.getStatusCode(),"statusCode");
 	}
 	
 	@Test
-	void getStatusMessageTestCase() {
+	void getStatusMessageTest() {
 		assertEquals(req.getStatusMessage(),"statusMessage");
 	}
 	
 	@Test
-	void getParametersTestCase() {
+	void getParametersTest() {
 		assertEquals(req.getParameters(),parameters);
 	}
 	
 	@Test
-	void getDataTestCase() {
+	void getDataTest() {
 		assertEquals(req.getData(),"data");
 	}
 

@@ -16,16 +16,16 @@ public class HTTPInputStreamClass extends HTTPInputStream{
 		this.inputS = is;
 	}
 
-	public HTTPRequest readHttpRequest() throws HTTPProtocolException {//legge una stringa dall'input stream e ne genera l'HTTPRequest
+	public HTTPRequest readHttpRequest() throws HTTPProtocolException {
 		Scanner sc = new Scanner(inputS);
-		sc.useDelimiter("%%%###");
+		sc.useDelimiter("%%%###");	// questo delimitatore e' inteso in modo da non essere realisticamente mai trovato
 		String message = sc.next();
 		p = new Parser(message);
 		sc.close();
 		return new HTTPRequestClass(p.extractMethOrVers(), p.extractURLOrStatN(), p.extractVersOrStatCode(), p.extractHeadersOrParam(), p.extractBodyOrData());
 	}
 
-	public HTTPReply readHttpReply() throws HTTPProtocolException {//legge una stringa dall'input stream e ne genera l'HTTPRply
+	public HTTPReply readHttpReply() throws HTTPProtocolException {
 		Scanner sc = new Scanner(inputS);
 		sc.useDelimiter("%%%###");
 		String message = sc.next();

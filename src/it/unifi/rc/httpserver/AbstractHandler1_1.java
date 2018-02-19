@@ -11,7 +11,6 @@ public abstract class AbstractHandler1_1 extends AbstractHandler{
 		getMethods().add("DELETE");
 	}
 
-	@Override
 	public String getCurrentVersion() {
 		return "HTTP/1.1";
 	}
@@ -20,12 +19,12 @@ public abstract class AbstractHandler1_1 extends AbstractHandler{
 		File f = new File(getPathFile() + request.getPath());
 		
 		if(request.getEntityBody().isEmpty()) {
-			return new HTTPReplyClass(request.getVersion(), "204", "No Content", null, null); //non sic
+			return new HTTPReplyClass(request.getVersion(), "204", "No Content", null, null);
 		}
 		
 		try {
 			if(f.exists()){
-				FileOutputStream fstream = new FileOutputStream(f, false); //se il secondo argomento e' a true appende in fondo, altrimenti sovrascrive.
+				FileOutputStream fstream = new FileOutputStream(f, false);
 				byte[] content = request.getEntityBody().getBytes();
 				fstream.write(content);
 				fstream.close();

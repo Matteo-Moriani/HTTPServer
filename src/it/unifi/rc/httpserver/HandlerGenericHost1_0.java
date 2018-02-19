@@ -8,9 +8,8 @@ public class HandlerGenericHost1_0 extends AbstractHandler1_0{
 		super(pathFile);
 	}
 
-	@Override
 	public boolean hostControl(HTTPRequest request) {
-		return true;
+		return true;	//questo handler non gestisce un particolare host, quindi passa sempre il controllo
 	}
 
 }

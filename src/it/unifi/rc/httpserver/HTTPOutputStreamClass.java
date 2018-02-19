@@ -14,23 +14,23 @@ public class HTTPOutputStreamClass extends HTTPOutputStream{
 		this.outputS = os;
 	}
 
-	public void writeHttpReply(HTTPReply reply) {//SCRIVE HTTPREPLY NELL'OUTPUT STREAM
-		String req = reply.getVersion()+ " " + reply.getStatusCode() + " " +reply.getStatusMessage() + "\r\n";
-		String req1 = "";
+	public void writeHttpReply(HTTPReply reply) {
+		String rep = reply.getVersion()+ " " + reply.getStatusCode() + " " +reply.getStatusMessage() + "\r\n";
+		String rep1 = "";
 		for (String key: reply.getParameters().keySet()) {
-			req1 = key + ": " + reply.getParameters().get(key) + "\r\n" + req1;
+			rep1 = key + ": " + reply.getParameters().get(key) + "\r\n" + rep1;
 		}
-		req = req + req1;
-		req = req + "\r\n";
-		req = req + reply.getData();
+		rep = rep + rep1;
+		rep = rep + "\r\n";
+		rep = rep + reply.getData();
 		try {
-			outputS.write(req.getBytes());
+			outputS.write(rep.getBytes());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void writeHttpRequest(HTTPRequest request) {//SCRIVE HTTPREQUEST NELL'OUTPUT STREAM
+	public void writeHttpRequest(HTTPRequest request) {
 		String req = request.getMethod()+ " " + request.getPath() + " " +request.getVersion() + "\r\n";
 		String req1 = "";
 		for (String key: request.getParameters().keySet()) {

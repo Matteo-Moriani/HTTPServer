@@ -12,27 +12,27 @@ class RequestTest {
 	private HTTPRequestClass req = new HTTPRequestClass("method", "url", "version", parameters, "body");
 	
 	@Test
-	void getMethodTestCase() {
+	void getMethodTest() {
 		assertEquals(req.getMethod(),"method");
 	}
 	
 	@Test
-	void getUrlTestCase() {
+	void getUrlTest() {
 		assertEquals(req.getPath(),"url");
 	}
 	
 	@Test
-	void getVersioneTestCase() {
+	void getVersioneTest() {
 		assertEquals(req.getVersion(),"version");
 	}
 	
 	@Test
-	void getParametersTestCase() {
+	void getParametersTest() {
 		assertEquals(req.getParameters(),parameters);
 	}
 	
 	@Test
-	void getBodyTestCase() {
+	void getBodyTest() {
 		assertEquals(req.getEntityBody(),"body");
 	}
 

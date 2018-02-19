@@ -10,7 +10,6 @@ public class HandlerSpecificHost1_1 extends AbstractHandler1_1{
 		this.host = host;
 	}
 
-	@Override
 	public boolean hostControl(HTTPRequest request) {
 		if(host.equals(request.getParameters().get("Host"))) {
 			return true;

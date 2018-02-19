@@ -7,7 +7,7 @@ import java.net.InetAddress;
 
 public class MyHTTPFactory implements HTTPFactory {
 
-	public HTTPInputStream getHTTPInputStream(InputStream is) { // vedi se ha senso fare un factory di classi che hanno costruttori definiti
+	public HTTPInputStream getHTTPInputStream(InputStream is) {
 		return new HTTPInputStreamClass(is);
 	}
 
@@ -31,7 +31,6 @@ public class MyHTTPFactory implements HTTPFactory {
 		return new HandlerSpecificHost1_1(root, host);
 	}
 
-	@Override
 	public HTTPServer getHTTPServer(int port, int backlog, InetAddress address, HTTPHandler... handlers) {
 		return new HTTPServerMultiClientClass(port, backlog, address, handlers);
 	}

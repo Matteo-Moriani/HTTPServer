@@ -1,10 +1,8 @@
 package Tests;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -19,8 +17,6 @@ import org.junit.jupiter.api.Test;
 import it.unifi.rc.httpserver.*;
 
 class HandlerTest {
-	
-	// handle() e' composto dai metodi replyTo_()
 	
 	@Test
 	void replyToGetOKTest() {
@@ -144,7 +140,6 @@ class HandlerTest {
 		HTTPRequestClass req = new HTTPRequestClass("PUT", "/src/Tests/PutTxt", "HTTP/1.1", null, num);
 		HTTPReplyClass rep = h.replyToPut(req);
 		
-		// verificare che ora c'e' scritto il nuovo random
 		String line = "";
 		String last = "";
         FileReader fileReader = null;

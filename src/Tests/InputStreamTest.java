@@ -16,7 +16,6 @@ class InputStreamTest {
 	void writeHttpReplyTest() {
 		parameters.put("prova1", "value1");
 		parameters.put("prova2", "value2");
-//		HTTPReplyClass rep = new HTTPReplyClass("version", "statuscode", "statusmessage", parameters, "body");
 		try {
 			assertEquals("body", socktest.simulateSocket().getData());
 			assertEquals("version", socktest.simulateSocket().getVersion());
@@ -33,7 +32,6 @@ class InputStreamTest {
 	void writeHttpRequestTest() {
 		parameters.put("prova1", "value1");
 		parameters.put("prova2", "value2");
-//		HTTPRequestClass rep = new HTTPRequestClass("version", "statuscode", "statusmessage", parameters, "body");
 		try {
 			assertEquals("body", socktest1.simulateSocket().getEntityBody());
 			assertEquals("version", socktest1.simulateSocket().getMethod());

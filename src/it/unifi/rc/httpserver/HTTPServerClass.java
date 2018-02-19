@@ -25,12 +25,11 @@ public abstract class HTTPServerClass implements HTTPServer{
 		}
 	}
 
-	@Override
 	public void addHandler(HTTPHandler handler) {
 		handlers.add(handler);
 	}
 	
-	public List<HTTPHandler> getHandlers(){			// serve ai test
+	public List<HTTPHandler> getHandlers(){	
 		return handlers;
 	}
 	
@@ -72,10 +71,8 @@ public abstract class HTTPServerClass implements HTTPServer{
 		ssocket = s;
 	}
 
-	@Override
-	public abstract void start() throws IOException;
+	public abstract void start() throws HTTPProtocolException;
 
-	@Override
 	public abstract void stop();
 
 }

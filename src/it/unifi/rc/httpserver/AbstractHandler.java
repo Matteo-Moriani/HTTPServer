@@ -26,7 +26,6 @@ public abstract class AbstractHandler implements HTTPHandler{
 	public abstract String getCurrentVersion();
 	public abstract HTTPReply chooseMethod(HTTPRequest request);
 
-	@Override
 	public HTTPReply handle(HTTPRequest request) {
 		HTTPReply reply = null;
 		
