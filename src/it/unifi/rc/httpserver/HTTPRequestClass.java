@@ -38,5 +38,18 @@ public class HTTPRequestClass implements HTTPRequest {
 	public Map<String, String> getParameters() {
 		return parameters;
 	}
+	
+	public boolean equals(Object o) {
+		boolean result = false;
+		if (o instanceof HTTPRequest) {
+			HTTPRequest req = (HTTPRequest) o;
+			if ((method.equals(req.getMethod())) && (path.equals(req.getPath())) 
+					&& (version.equals(req.getVersion())) && (parameters.equals(req.getParameters())) 
+					&& (entityBody.equals(req.getEntityBody()))) {
+				return true;
+			}
+		}
+		return result;
+	}
 
 }

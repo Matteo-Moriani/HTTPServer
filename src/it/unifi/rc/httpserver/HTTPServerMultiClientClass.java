@@ -1,11 +1,9 @@
 package it.unifi.rc.httpserver;
+
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
 
 public class HTTPServerMultiClientClass extends HTTPServerClass implements Runnable{
 	private Socket s;

@@ -35,10 +35,8 @@ public class MyHTTPFactory implements HTTPFactory {
 		return new HTTPServerSinglClientClass(port, backlog, address, handlers);
 	}
 	
-	@Override
 	public HTTPHandler getProxyHandler() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ProxyHandler();
 	}
 
 }
