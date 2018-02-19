@@ -7,8 +7,11 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HTTPServerMultiClientClass extends HTTPServerClass{
-
+public class HTTPServerMultiClientClass extends HTTPServerClass implements Runnable{
+	private Socket s;
+	private boolean run = true;
+	private boolean bool = true;
+	private Thread h;
 
 	public HTTPServerMultiClientClass(int port, int backlog, InetAddress address, HTTPHandler... handlers) {
 		super(port, backlog, address, handlers);
@@ -18,38 +21,53 @@ public class HTTPServerMultiClientClass extends HTTPServerClass{
 			e.printStackTrace();
 		}
 	}
+	
+//	public HTTPServerMultiClientClass(Socket s, int port, int backlog, InetAddress address, HTTPHandler... handlers) {
+//		super(port, backlog, address, handlers);
+//		this.s = s;
+//	}	
 
 	@Override
-	public void start() throws HTTPProtocolException {
-		Socket s = null;
-		while(true){
-			s = null;
-			try {
-				setAcc(getSSocket().accept());
-				s = getAcc();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-			if(s != null) {
-				new Thread(
-						new Runnable(){
-							public void run(){
-							
-							}
-						}
-						).start();
-			}
-		}
+	public void start() throws IOException {
+		h = new Thread(
+				  new Runnable(){
+					public void run(){
+				      try {
+				    	  while(run) {
+				    		s = getSSocket().accept();
+				    		setAcc(s);
+				    		System.out.println("connected");
+				    		bool = false;
+				    		//new Thread(this.HTTPServerMultiClientClass(getAcc(), getPort(), getBacklog(), getAddress(), getHandlers())).start();
+				    	  }
+				      } catch (IOException e) {
+				      }
+				    }
+					}
+				  
+				);
+		h.start();
 	}
 
 	@Override
 	public void stop() {
+		while(bool) {
+			
+		}
+		run = false;
 		try {
-			getAcc().close();
 			getSSocket().close();
+			getAcc().close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		System.out.println("stopped");
+	}
+
+	@Override
+	public void run() {
+		
 	}
 	
 }

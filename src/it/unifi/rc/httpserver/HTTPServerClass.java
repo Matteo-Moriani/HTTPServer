@@ -29,8 +29,11 @@ public abstract class HTTPServerClass implements HTTPServer{
 		handlers.add(handler);
 	}
 	
-	public List<HTTPHandler> getHandlers(){	
-		return handlers;
+	public HTTPHandler [] getHandlers(){
+		 HTTPHandler [] hand = new HTTPHandler [handlers.size()];
+		for(int i = 0; i < handlers.size() ; i++)
+			hand[i] = handlers.get(i);
+		return hand;
 	}
 	
 	public InputStream getInputStream() {
@@ -71,7 +74,7 @@ public abstract class HTTPServerClass implements HTTPServer{
 		ssocket = s;
 	}
 
-	public abstract void start() throws HTTPProtocolException;
+	public abstract void start() throws IOException;
 
 	public abstract void stop();
 

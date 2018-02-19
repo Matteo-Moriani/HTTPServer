@@ -16,11 +16,11 @@ class ServerTest {
 	void addHandlerTest() {
 		HTTPServerSinglClientClass server = null;
 		try {
-			server = new HTTPServerSinglClientClass(1,1,InetAddress.getByName("localhost"));
+			server = new HTTPServerSinglClientClass(1000,100,InetAddress.getByName("localhost"));
 		} catch (UnknownHostException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		server.addHandler(h);
-		assertEquals(h,server.getHandlers().get(0));
+		assertEquals(h,server.getHandlers()[0]);
 	}
 }

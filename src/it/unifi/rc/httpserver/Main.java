@@ -19,32 +19,36 @@ import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.TimeUnit;
 
 public class Main {	// ora ci sono i test
 
 	public static void main(String[] args) throws IOException {
-		HTTPServerSinglClientClass server = new HTTPServerSinglClientClass(4000, 500000, InetAddress.getByName("localhost"), new HandlerGenericHost1_0(new File("AAA")));
+		HTTPServerMultiClientClass server = new HTTPServerMultiClientClass(4000, 500000, InetAddress.getByName("localhost"), new HandlerGenericHost1_0(new File("AAA")));
 		server.start();
-		
 		Socket client = new Socket("localhost", 4000);
-		client.getOutputStream().write("no".getBytes());
-		InputStream stream = server.getAcc().getInputStream();
+		Socket client1 = new Socket("localhost", 4000);
+		Socket client2 = new Socket("localhost", 4000);
+		//System.out.println("AAAA");
 		
-		System.out.println((char)stream.read());
-		
-//		Socket client1 = new Socket("localhost", 4000);
-//		client1.getOutputStream().write("sii".getBytes());
-//		InputStream stream2 = server.getAcc().getInputStream();
-		//System.out.println("1");
-		//System.out.println("2");
-		//System.out.println("3");
-		System.out.println((char)stream.read());
-//		System.out.println((char)stream2.read());
-//		System.out.println((char)stream2.read());
-		//System.out.println("4");
-		//server.stop();
-		//System.out.println("5");
+		//Socket client2 = new Socket("localhost", 4000);
+		//System.out.println("AAAA");
+		//client.getOutputStream().write("a".getBytes());
+		//client2.getOutputStream().write("a".getBytes());
+	
+		//System.out.println(server.getInputStream().read());
+		//client2.getOutputStream().write("s".getBytes());
+	
+//		System.out.println((char)stream.read());
+//		
+//		server.stop();
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		server.stop();
+		
 	}
 
 }
