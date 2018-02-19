@@ -14,7 +14,7 @@ class ProxyTest {
 	void addTest() {
 		HTTPHandler alternative = new HandlerGenericHost1_0(new File(""));
 		Map<String,String> p = new HashMap<>();
-		ProxyHandler h = new ProxyHandler(10, alternative);
+		ProxyHandler h = new ProxyHandler();
 		HTTPRequestClass req = new HTTPRequestClass("GET", "/src/Tests/GetHeadTxt", "HTTP/1.0", p, "");
 		HTTPReply rep = alternative.handle(req);
 		h.add(req,rep);
@@ -27,7 +27,7 @@ class ProxyTest {
 	void handleTest() {
 		HTTPHandler alternative = new HandlerGenericHost1_0(new File(""));
 		Map<String,String> p = new HashMap<>();
-		ProxyHandler h = new ProxyHandler(10, alternative);
+		ProxyHandler h = new ProxyHandler();
 		HTTPRequestClass req = new HTTPRequestClass("WRONG", "/src/Tests/GetHeadTxt", "HTTP/1.0", p, "");
 		HTTPReply rep = alternative.handle(req);
 		h.add(req,rep);
