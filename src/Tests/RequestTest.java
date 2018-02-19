@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 
 class RequestTest {
 	
-	private Map<String,String> parameters = new HashMap<>();
-	private HTTPRequestClass req = new HTTPRequestClass("method", "url", "version", parameters, "body");
+	 Map<String,String> parameters = new HashMap<>();
+	 HTTPRequestClass req = new HTTPRequestClass("method", "url", "version", parameters, "body");
 	
 	@Test
 	void getMethodTest() {
@@ -34,6 +34,15 @@ class RequestTest {
 	@Test
 	void getBodyTest() {
 		assertEquals(req.getEntityBody(),"body");
+	}
+	
+	@Test
+	void equalsTest() {
+		HTTPRequestClass req1 = new HTTPRequestClass("method", "url", "version", parameters, "body");
+		HTTPRequestClass req2 = new HTTPRequestClass("method", "url", "version", parameters, "body");
+		HTTPRequestClass req3 = new HTTPRequestClass("m", "u", "v", parameters, "b");
+		assertEquals(true,req1.equals(req2));
+		assertEquals(false,req1.equals(req3));
 	}
 
 }
