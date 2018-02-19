@@ -1,15 +1,15 @@
 package it.unifi.rc.httpserver;
-
 import java.io.IOException;
-import java.io.OutputStream;
+import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HTTPServerMultiClientClass extends HTTPServerClass {
-	
+public class HTTPServerMultiClientClass extends HTTPServerClass{
+
+
 	public HTTPServerMultiClientClass(int port, int backlog, InetAddress address, HTTPHandler... handlers) {
 		super(port, backlog, address, handlers);
 		try {
@@ -20,21 +20,26 @@ public class HTTPServerMultiClientClass extends HTTPServerClass {
 	}
 
 	@Override
-	public void start() throws IOException {
-		new Thread(
-				  new Runnable(){
-					public void run(){
-				      try {
-				    	  boolean prova = true;
-				    	  while(prova)
-				    		  setAcc(getSSocket().accept());
-						//setAcc(getSSocket().accept());
-				      } catch (IOException e) {
-						e.printStackTrace();
-				      }
-				    }
-				  }
-				).start();
+	public void start() throws HTTPProtocolException {
+		Socket s = null;
+		while(true){
+			s = null;
+			try {
+				setAcc(getSSocket().accept());
+				s = getAcc();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			if(s != null) {
+				new Thread(
+						new Runnable(){
+							public void run(){
+							
+							}
+						}
+						).start();
+			}
+		}
 	}
 
 	@Override

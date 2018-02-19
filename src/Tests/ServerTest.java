@@ -14,9 +14,9 @@ class ServerTest {
 
 	@Test
 	void addHandlerTest() {
-		HTTPServerMultiClientClass server = null;
+		HTTPServerSinglClientClass server = null;
 		try {
-			server = new HTTPServerMultiClientClass(1,1,InetAddress.getByName("localhost"));
+			server = new HTTPServerSinglClientClass(1,1,InetAddress.getByName("localhost"));
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
