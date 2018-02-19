@@ -1,12 +1,8 @@
 package it.unifi.rc.httpserver;
 
 import java.io.IOException;
-import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
 
 public class HTTPServerSinglClientClass extends HTTPServerClass {
 	
