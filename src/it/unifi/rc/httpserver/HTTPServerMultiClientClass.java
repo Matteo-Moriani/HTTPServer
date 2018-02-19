@@ -12,16 +12,23 @@ public class HTTPServerMultiClientClass extends HTTPServerClass {
 	
 	public HTTPServerMultiClientClass(int port, int backlog, InetAddress address, HTTPHandler... handlers) {
 		super(port, backlog, address, handlers);
+		try {
+			setSSsocket(new ServerSocket(getPort(), getBacklog(), getAddress()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void start() throws IOException {
-		setSSsocket(new ServerSocket(getPort(), getBacklog(), getAddress()));
 		new Thread(
 				  new Runnable(){
 					public void run(){
 				      try {
-						setAcc(getSSocket().accept());
+				    	  boolean prova = true;
+				    	  while(prova)
+				    		  setAcc(getSSocket().accept());
+						//setAcc(getSSocket().accept());
 				      } catch (IOException e) {
 						e.printStackTrace();
 				      }
